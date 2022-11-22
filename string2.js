@@ -10,16 +10,20 @@ doubleChar("Hi-There") → "HHii--TThheerree
 */
 
 function doubleChar(str) {
-  return str
-    .split("")
-    .map((a) => a + a)
-    .join("");
+  return (
+    str
+      // splits string into array with 1 char per index;
+      .split("")
+      // maps each char to add one copy per;
+      .map((a) => a + a)
+      // joins the array back into a string;
+      .join("")
+  );
 }
 
-console.log(doubleChar("hi-there"));
+//////////////////////////////////////////////////////////
 
 /*Return the number of times that the string "hi" appears anywhere in the given string.
-
 
 countHi("abc hi ho") → 1
 countHi("ABChi hi") → 2
@@ -27,16 +31,19 @@ countHi("hihi") → 2
 */
 
 function countHi(str) {
+  // variable for count init to 0;
   let count = 0;
+  // loop over the passed in string one index at a time;
   for (let i = 0; i < str.length; i++) {
-    if (str.substr(i, 2) == "hi") {
+    // if the index and the char after it = "hi", increment the count;
+    if (str.substring(i, i + 2) === "hi") {
       count++;
     }
   }
   return count;
 }
 
-console.log(countHi("abc hi ho"));
+//////////////////////////////////////////////////////////
 
 /*
 Return true if the string "cat" and "dog" appear the same number of times in the given string.
@@ -47,23 +54,23 @@ catDog("1cat1cadodog") → true
 */
 
 function catDog(str) {
-  let cats = 0;
-  let dogs = 0;
+  // variable for catCount and dogCount init to 0;
+  let catCount = 0;
+  let dogCount = 0;
+  // loop over passed in string and if current index + 3 is = to cat or dog increment respective count;
   for (let i = 0; i < str.length; i++) {
-    if (str.substr(i, 3) === "cat") {
-      cats++;
+    if (str.substring(i, i + 3) === "cat") {
+      catCount++;
     }
-    if (str.substr(i, 3) === "dog") {
-      dogs++;
+    if (str.substring(i, i + 3) === "dog") {
+      dogCount++;
     }
   }
-  if (cats > 0 && cats === dogs) {
-    return true;
-  }
-  return false;
+  // if the counts are > 0 and equal to eachother returns true; otherwise returns false;
+  return catCount > 0 && catCount === dogCount;
 }
 
-console.log(catDog("catcatdog"));
+//////////////////////////////////////////////////////////
 
 /*
 Return the number of times that the string "code" appears anywhere in the given string, except we'll accept any letter for the 'd', so "cope" and "cooe" count.
@@ -74,16 +81,11 @@ countCode("cozexxcope") → 2
 */
 
 function countCode(str) {
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str.substr(i, 2) == "co" && str.substr(i + 3, 1) === "e") {
-      count++;
-    }
-  }
-  return count;
+  // returns the length(count) of regex matches to co"wildcard"e within the argument string;
+  return str.match(/co\w\e/g).length;
 }
 
-console.log(countCode("cozexxcope"));
+//////////////////////////////////////////////////////////
 
 /*
 Given two strings, return true if either of the strings appears at the very end of the other string, ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). Note: str.toLowerCase() returns the lowercase version of a string.
@@ -93,11 +95,18 @@ endOther("AbC", "HiaBc") → true
 endOther("abc", "abXabc") → true
 */
 
-function endOther(strA, strB) {
-  return strA.substr(-strB.length) ? true : false;
+function endOther(a, b) {
+  // converts each string to lowercase;
+  let strA = a.toLowerCase();
+  let strB = b.toLowerCase();
+  // if a string is shorter then b string see if a matches anything in b, otherwise see if b matches anything in a;
+  return a.length > b.length
+    ? // if results are returned they are added to an array, if the length is > 0 true is returned;
+      strA.match(strB).length > 0
+    : strB.match(strA).length > 0;
 }
 
-console.log(endOther("abc", "abXabc"));
+//////////////////////////////////////////////////////////
 
 /*
 Return true if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.). So "xxyz" counts but "x.xyz" does not.
@@ -108,15 +117,17 @@ xyzThere("xyz.abc") → true
 */
 
 function xyzThere(str) {
-  let answer = false;
+  // loop over the string;
   for (let i = 0; i < str.length; i++) {
-    if (str.substr(i, 3) === "xyz" && str.substr(i - 1, 1) !== ".") {
-      answer = true;
+    // if the current index and following 2 chars is "xyz" and not preceeded by ".", return true, otherwise false;
+    if (str.substring(i, i + 3) === "xyz" && str.charAt(i - 1) !== ".") {
+      return true;
     }
   }
-  return answer;
+  return false;
 }
-console.log(xyzThere("abc.xyz"));
+
+//////////////////////////////////////////////////////////
 
 /*
 Return true if the given string contains a "bob" string, but where the middle 'o' char can be any char.
@@ -127,15 +138,12 @@ bobThere("bac") → false
 */
 
 function bobThere(str) {
-  for (let i = 0; i < str.length; i++) {
-    if (str.substr(i, 1) === "b" && str.substr(i + 2, 1) === "b") {
-      return true;
-    }
-  }
-  return false;
+  // uses regex with wildcard middle checking for "b*b";
+  //if anything is populated its a match and true is returned;
+  return str.match(/b\wb/) !== null;
 }
 
-console.log(bobThere("b9b"));
+//////////////////////////////////////////////////////////
 
 /*
 We'll say that a String is xy-balanced if for all the 'x' chars in the string, there exists a 'y' char somewhere later in the string. So "xxy" is balanced, but "xyx" is not. One 'y' can balance multiple 'x's. Return true if the given string is xy-balanced.
@@ -146,21 +154,23 @@ xyBalance("yaaxbb") → false
 */
 
 function xyBalance(str) {
-  let xIndex;
+  // variable for y index and x index init;
   let yIndex;
-
-  for (let i = 0; i < str.length; i++) {
-    if (str.substr(i, 1) == "x") {
-      xIndex = i;
-    }
-    if (str.substr(i, 1) == "y") {
+  let xIndex;
+  // loop over the string backwards and assign first found index of y and x to variables;
+  for (let i = str.length - 1; i > 0; i--) {
+    if (str.charAt(i) === "y") {
       yIndex = i;
     }
+    if (str.charAt(i) === "x") {
+      xIndex = i;
+    }
   }
-  return xIndex < yIndex ? true : false;
+  // if the y index is > than x index it came after the x and true is returned;
+  return yIndex > xIndex;
 }
 
-console.log(xyBalance("yaaxbb"));
+//////////////////////////////////////////////////////////
 
 /*
 Given two strings, a and b, create a bigger string made of the first char of a, the first char of b, the second char of a, the second char of b, and so on. Any leftover chars go at the end of the result.
