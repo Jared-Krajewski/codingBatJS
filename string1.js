@@ -12,7 +12,6 @@ helloName("X") → "Hello X!"
 function helloName(name) {
   console.log("hello " + name + "!");
 }
-helloName("Bob");
 
 // or
 

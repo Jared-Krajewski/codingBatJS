@@ -5,7 +5,7 @@
 Goal:take array and return true if first or last in array is 6;
 Params: array: arr;
 Return Val: boolean;
-Logic if first index or last index is = to 6;
+Logic: if first index or last index is == to 6;
 return true;
 otherwise return false;
 
@@ -18,20 +18,20 @@ firstLast6([13, 6, 1, 2, 3]) → false
 */
 
 function firstLast6(arr) {
-    if (arr[0] === 6 || arr[arr.length - 1] == 6) {
-      return true;
-    }
-    return false;
+  if (arr[0] === 6 || arr[arr.length - 1] == 6) {
+    return true;
   }
-  
-  console.log(firstLast6([1, 6, 2, 26]));
-
-// or 
-
-function firstLast6(arr){
-  return arr[0] == 6 || arr[arr.length-1] == 6
+  return false;
 }
-console.log(firstLast6([13, 6, 1, 2, 3]))
+
+console.log(firstLast6([1, 6, 2, 26]));
+
+// or
+
+function firstLast6(arr) {
+  return arr[0] == 6 || arr[arr.length - 1] == 6;
+}
+console.log(firstLast6([13, 6, 1, 2, 3]));
 
 //////////////////////////////////////////////////////////
 
@@ -54,22 +54,22 @@ sameFirstLast([1, 2, 1]) → true
 */
 
 function sameFirstLast(arr) {
-    if (arr.length > 1 && arr[0] == arr[arr.length - 1]) {
-      return true;
-    }
-    return false;
+  if (arr.length > 1 && arr[0] == arr[arr.length - 1]) {
+    return true;
   }
-  
-  console.log(sameFirstLast([1, 2, 3, 1]));
+  return false;
+}
 
-  // or 
+console.log(sameFirstLast([1, 2, 3, 1]));
 
-  function sameFirstLast(arr){
-    return arr.length > 1 && arr[0] === arr[arr.length - 1] 
-   }
-   console.log(sameFirstLast([1, 2, 3]))
+// or
 
- //////////////////////////////////////////////////////////
+function sameFirstLast(arr) {
+  return arr.length > 1 && arr[0] === arr[arr.length - 1];
+}
+console.log(sameFirstLast([1, 2, 3]));
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal: make an array with first 3 digits of pi;
@@ -83,12 +83,12 @@ makePi() → [3, 1, 4]
 */
 
 function makePi() {
-    return [3, 1, 4];
-  }
-  
-  console.log(makePi());
+  return [3, 1, 4];
+}
 
-  //////////////////////////////////////////////////////////
+console.log(makePi());
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal:take 2 arrays, return true if they have the same first or last 
@@ -123,17 +123,14 @@ function commonEnd(a, b) {
 
 console.log(commonEnd([1, 2, 3], [1, 3]));
 
-// or 
+// or
 function commonEnd(a, b) {
-  return a[0] === b[0] 
-    || a[a.length - 1] === b[b.length - 1]
-    ? true 
-    : false;
+  return a[0] === b[0] || a[a.length - 1] === b[b.length - 1] ? true : false;
 }
 
 console.log(commonEnd([1, 2, 3], [1, 3]));
 
-  //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 /*
 Goal:take an array with 3 numbers and return the total sum;
@@ -150,20 +147,20 @@ sum3([7, 0, 0]) → 7
 */
 
 function sum3(a) {
-    let num = 0;
-    a.forEach((int) => (num += int));
-    return num;
-  }
-  console.log(sum3([5, 11, 2]));
+  let num = 0;
+  a.forEach((int) => (num += int));
+  return num;
+}
+console.log(sum3([5, 11, 2]));
 
-  // or 
+// or
 
-  function sum3(a) {
-    return a.reduce((b,c) => b + c)
-   }
-   console.log(sum3([5, 11, 2]));
+function sum3(a) {
+  return a.reduce((b, c) => b + c);
+}
+console.log(sum3([5, 11, 2]));
 
-    //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 /*
 Goal:take an array of 3 ints and return them with the first digit rotated 
@@ -182,16 +179,16 @@ rotateLeft3([7, 0, 0]) → [0, 0, 7]
 */
 
 function rotateLeft3(a) {
-    a.push(a[0]);
-    a.shift();
-  
-    return a;
-  }
-  
-  console.log(rotateLeft3([5, 11, 9]));
+  a.push(a[0]);
+  a.shift();
 
-  //////////////////////////////////////////////////////////
-  
+  return a;
+}
+
+console.log(rotateLeft3([5, 11, 9]));
+
+//////////////////////////////////////////////////////////
+
 /*
 Goal:return an array reversed ;
 Params: array: a;
@@ -206,13 +203,13 @@ reverse3([5, 11, 9]) → [9, 11, 5]
 reverse3([7, 0, 0]) → [0, 0, 7]
 */
 
-function reverse3(a){
-   return a.reverse()
-  }
-  
-  console.log(reverse3([5, 11, 9]))
+function reverse3(a) {
+  return a.reverse();
+}
 
-  //////////////////////////////////////////////////////////
+console.log(reverse3([5, 11, 9]));
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal: take an array and see if the first or last element is larger.
@@ -237,12 +234,12 @@ function maxEnd3(a) {
   a[0] = max;
   a[1] = max;
   a[2] = max;
- return a
+  return a;
 }
 
 console.log(maxEnd3([11, 5, 9]));
 
-// or 
+// or
 
 function maxEnd3(a) {
   let max = Math.max(a[0], a[a.length - 1]);
@@ -275,32 +272,31 @@ sum2([1, 1, 1, 1]) → 2
 */
 
 function sum2(a) {
-    if (a.length == 0) {
-      return 0;
-    }
-    if (a.length < 2) {
-      return a[0] + a[1] || a[0];
-    }
-    return a[0] + a[1];
+  if (a.length == 0) {
+    return 0;
   }
-  
-  console.log(sum2([1, 1, 1, 1]));
-  
-  // or 
-
-  function sum2(a) {
-    let total = 0;
-    return a.reduce((a, b, i) => {
-      while (i <= 1) {
-        return a + b;
-      }
-      return a;
-    });
+  if (a.length < 2) {
+    return a[0] + a[1] || a[0];
   }
-  console.log(sum2([1, 4, 5]));
+  return a[0] + a[1];
+}
 
-  //////////////////////////////////////////////////////////
+console.log(sum2([1, 1, 1, 1]));
 
+// or
+
+function sum2(a) {
+  let total = 0;
+  return a.reduce((a, b, i) => {
+    while (i <= 1) {
+      return a + b;
+    }
+    return a;
+  });
+}
+console.log(sum2([1, 4, 5]));
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal: take 2 arrays and return an array with both middle elements;
@@ -318,26 +314,26 @@ middleWay([5, 2, 9], [1, 4, 5]) → [2, 4]
 */
 
 function middleWay(a, b) {
-    let middle = [];
-    middle.push(a[1], b[1]);
-    return middle;
-  }
-  
-  console.log(middleWay([7, 7, 7], [3, 8, 0]));
+  let middle = [];
+  middle.push(a[1], b[1]);
+  return middle;
+}
 
-  // or 
+console.log(middleWay([7, 7, 7], [3, 8, 0]));
 
-  function middleWay(a, b) {
-    let result = 
-        [a[Math.floor(a.length / 2 + 1)],
-         b[Math.floor(b.length / 2 + 1)]
-        ];
-    return result
-  }
- 
-  console.log(middleWay([7, 7, 7], [3, 8, 0]));
+// or
 
-  //////////////////////////////////////////////////////////
+function middleWay(a, b) {
+  let result = [
+    a[Math.floor(a.length / 2 + 1)],
+    b[Math.floor(b.length / 2 + 1)],
+  ];
+  return result;
+}
+
+console.log(middleWay([7, 7, 7], [3, 8, 0]));
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal: return new array with first and last elements from original array; 
@@ -356,14 +352,14 @@ makeEnds([1, 2, 3, 4]) → [1, 4]
 makeEnds([7, 4, 6, 2]) → [7, 2]
 */
 
-function makeEnds(a){
-    let newArr = [];
-    newArr.push(a[0], a[a.length -1]);
-    return newArr;
-  }
-  console.log(makeEnds([1, 2, 3]))
+function makeEnds(a) {
+  let newArr = [];
+  newArr.push(a[0], a[a.length - 1]);
+  return newArr;
+}
+console.log(makeEnds([1, 2, 3]));
 
-  //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 /*
 Goal: return true if array contains a 2 or a 3;
@@ -381,39 +377,38 @@ has23([4, 3]) → true
 has23([4, 5]) → false
 */
 
-function has23(a){
-    if (a[0] === 2 || a[0] === 3 || a[1] === 2 || a[1] === 3){
-      return true
-    }
-    return false
+function has23(a) {
+  if (a[0] === 2 || a[0] === 3 || a[1] === 2 || a[1] === 3) {
+    return true;
   }
-  console.log(has23([4, 5]));
+  return false;
+}
+console.log(has23([4, 5]));
 
-  // or 
+// or
 
-  function has23(a) {
-    let answer = false;
-    a.includes(2)
-      ? (answer = true)
-      : a.includes(3)
-      ? (answer = true)
-      : (answer = false);
-    return answer;
+function has23(a) {
+  let answer = false;
+  a.includes(2)
+    ? (answer = true)
+    : a.includes(3)
+    ? (answer = true)
+    : (answer = false);
+  return answer;
+}
+console.log(has23([4, 3]));
+
+// or
+
+function has23(a) {
+  if (a.includes(2) || a.includes(3)) {
+    return true;
   }
-  console.log(has23([4,3]));
+  return false;
+}
+console.log(has23([4, 5]));
 
-  // or 
-
-  function has23(a) {
-    if (a.includes(2) || a.includes(3)) {
-      return true;
-    }
-    return false;
-  }
-  console.log(has23([4, 5]));
-  
-
-  //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 /*
 Goal:return true if array does not contain a 2 or 3;
@@ -431,25 +426,25 @@ no23([3, 5]) → false
 */
 
 function no23(a) {
-    if ((a[0] && a[1]) != (2 || 3)) {
-      return true;
-    }
-    return false;
+  if ((a[0] && a[1]) != (2 || 3)) {
+    return true;
   }
-  
-  console.log(no23([5, 5]));
-  
-  // or 
+  return false;
+}
 
-  function no23(a) {
-    if (!a.includes(2) && !a.includes(3)) {
-      return true;
-    }
-    return false;
+console.log(no23([5, 5]));
+
+// or
+
+function no23(a) {
+  if (!a.includes(2) && !a.includes(3)) {
+    return true;
   }
-  console.log(no23([3, 5]));
-  
-  //////////////////////////////////////////////////////////
+  return false;
+}
+console.log(no23([3, 5]));
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal: return an array double the length filled with zeroes except the
@@ -503,23 +498,23 @@ double23([2, 3]) → false
 */
 
 function double23(a) {
-    if (a[0] === a[1] && (2 || 3)) {
-      return true;
-    }
-    return false;
+  if (a[0] === a[1] && (2 || 3)) {
+    return true;
   }
-  
-  console.log(double23([3, 3]));
+  return false;
+}
 
-  // or 
+console.log(double23([3, 3]));
 
-  function double23(a) {
-    return a[0] === a[1] && (2 || 3) ? true : false;
-  }
-  
-  console.log(double23([2, 2]));
+// or
 
-  //////////////////////////////////////////////////////////
+function double23(a) {
+  return a[0] === a[1] && (2 || 3) ? true : false;
+}
+
+console.log(double23([2, 2]));
+
+//////////////////////////////////////////////////////////
 
 /*
 Goal:take 2 arrays and return a count of how many arrays have 1 as their first element;
@@ -583,7 +578,7 @@ function biggerTwo(a, b) {
 }
 console.log(biggerTwo([4, 4], [3, 4]));
 
-// or 
+// or
 
 function biggerTwo(a, b) {
   let aSum = a[0] + a[1];
@@ -595,6 +590,14 @@ console.log(biggerTwo([4, 4], [3, 4]));
 //////////////////////////////////////////////////////////
 
 /*
+
+Given an array of ints of even length, return a new array length 2 containing the 
+middle two elements from the original array. The original array will be length 2 or more;
+
+makeMiddle([1, 2, 3, 4]) → [2, 3]
+makeMiddle([7, 1, 2, 3, 4, 9]) → [2, 3]
+makeMiddle([1, 2]) → [1, 2]
+
 Goal: take an even length array and return a new 2 length array containing the 
 middle two elements of the original;
 Params: array: a;
@@ -603,12 +606,6 @@ Logic:
 create array with middle -1 element and middle +1 element;
 return array;
 
-Given an array of ints of even length, return a new array length 2 containing the 
-middle two elements from the original array. The original array will be length 2 or more;
-
-makeMiddle([1, 2, 3, 4]) → [2, 3]
-makeMiddle([7, 1, 2, 3, 4, 9]) → [2, 3]
-makeMiddle([1, 2]) → [1, 2]
 */
 
 function makeMiddle(a) {
@@ -670,7 +667,7 @@ function swapEnds(a) {
 
 console.log(swapEnds([1, 2, 3]));
 
-// or 
+// or
 
 function swapEnds(a) {
   let last = a[a.length - 1];
@@ -736,7 +733,7 @@ function maxTriple(a) {
 
 console.log(maxTriple([1, 2, 3]));
 
-// or 
+// or
 
 function maxTriple(a) {
   return Math.max(...a);
@@ -772,7 +769,7 @@ function frontPiece(a) {
 
 console.log(frontPiece([1]));
 
-// or 
+// or
 
 function frontPiece(a) {
   return a.length >= 2 ? a.slice(0, 2) : a[0];
@@ -869,8 +866,6 @@ function front11(a, b) {
 }
 
 console.log(front11([1, 7], []));
-
-
 
 //////////////////////////////////////////////////////////
 /* END OF CODINGBAT ARRAY 1 IN JAVASCRIPT */
